@@ -2,38 +2,48 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 
-class Square extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      toeURL: "https://i.imgur.com/s0gSzN0.png",
-      value: null
-      //       squares: Array(9).fill(null)
-    };
-  }
-  //   insertToe() {
-  //     "";
-  //   }
-  render() {
-    return (
-      <button
-        className="square"
-        onClick={() => {
-          this.setState({ value: <img src={this.state.toeURL} /> });
-          // eslint-disable-next-line
-          //   concat(<img src={this.props.toeURL} />);
-          // eslint-disable-next-line
-          //   append(<img src={this.props.toeURL} />);
-          // eslint-disable-next-line
-          //   append(<img src={this.props.toeURL} />);
-        }}
-      >
-        {this.state.value}
-        {/* TODO */}
-      </button>
-    );
-  }
+function Square(props) {
+  return (
+    <button
+      className="square"
+      onClick={() => {
+        // eslint-disable-next-line
+        this.setState({ value: <img src={props.passSquareUrl} /> });
+      }}
+    >
+      {props.originalValue}
+      {/* TODO */}
+    </button>
+  );
 }
+
+// class Square extends React.Component {
+//   constructor(props) {
+//     super(props);
+//     this.state = {
+//       toeURL: "https://i.imgur.com/s0gSzN0.png",
+//       value: null
+//       //       squares: Array(9).fill(null)
+//     };
+//   }
+//   //   insertToe() {
+//   //     "";
+//   //   }
+//   render() {
+//     return (
+//       <button
+//         className="square"
+//         onClick={() => {
+//           // eslint-disable-next-line
+//           this.setState({ value: <img src={this.state.toeURL} /> });
+//         }}
+//       >
+//         {this.state.value}
+//         {/* TODO */}
+//       </button>
+//     );
+//   }
+// }
 
 class Board extends React.Component {
   //   constructor(props) {
@@ -44,12 +54,15 @@ class Board extends React.Component {
   //       //       squares: Array(9).fill(null)
   //     };
   //   }
+
   renderSquare(i) {
     return <Square />;
   }
 
   render() {
     const status = "Next player: X";
+    let passSquareUrl = this.props.toeURL;
+    let originalValue = this.props.value;
 
     return (
       <div>
@@ -77,6 +90,13 @@ class Board extends React.Component {
 }
 
 class Game extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      toeURL: "https://i.imgur.com/s0gSzN0.png",
+      value: null
+    };
+  }
   render() {
     return (
       <div className="game">
