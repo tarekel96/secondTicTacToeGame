@@ -1,14 +1,58 @@
 body {
-  margin: 0;
-  padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font: 14px "Century Gothic", Futura, sans-serif;
+  margin: 20px;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+ol,
+ul {
+  padding-left: 30px;
+}
+
+.board-row:after {
+  /* specifies that no elements can float to the left or right of any of the board's rows */
+  clear: both;
+  content: "";
+  display: table;
+}
+
+.status {
+  margin-bottom: 10px;
+}
+
+/* the square is button from react and is customized here below with CSS */
+.square {
+  background: #fff;
+  border: 1px solid #999;
+  /* align-content: center;
+  align-items: center; */
+  float: left;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 80px;
+  height: 80px;
+  margin-right: -1px;
+  margin-top: -1px;
+  padding: 0;
+  text-align: center;
+  width: 80px;
+}
+
+.square:focus {
+  outline: none;
+}
+
+.kbd-navigation .square:focus {
+  background: #ddd;
+}
+
+.game {
+  display: flex;
+  /* tells CSS to stack the row 'containers' in a row-like direction */
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 175px;
+}
+
+.game-info {
+  margin-left: 20px;
 }
