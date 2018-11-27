@@ -19,7 +19,7 @@ class Square extends React.Component {
       <button
         className="square"
         onClick={() => {
-          this.setState({ value: "X" });
+          this.setState({ value: <img src={this.state.toeURL} /> });
           // eslint-disable-next-line
           //   concat(<img src={this.props.toeURL} />);
           // eslint-disable-next-line
