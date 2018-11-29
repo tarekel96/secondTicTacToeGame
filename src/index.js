@@ -14,21 +14,62 @@ function Square(props) {
 }
 
 class Board extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      squares: Array(9).fill(null),
+      toeURL: "https://i.imgur.com/s0gSzN0.png",
+      ticTacURL: "https://i.imgur.com/O2ieQGA.png",
+      // sets the first move of game to be 'Toes'
+      toesIsNext: true
+    };
+  }
+
+  // everytime the user clicks a square, a new set of squares is re-rendered with the result of the click (maintain immutability)
+  handleClick(i) {
+    // slice was used in order to maintain immutability because it creates a copy of the square array, instead of directly modifying the current square array.
+    const squares = this.state.squares.slice();
+    if (calculateWinner(squares) || squares[i]) {
+      return;
+    }
+    // if toesIsNext is true, it will output a "toes" the next time a user clicks
+    squares[i] = this.state.toesIsNext ? (
+      // eslint-disable-next-line
+      <img src={this.state.toeURL} />
+    ) : (
+      // eslint-disable-next-line
+      <img src={this.state.ticTacURL} />
+    );
+    this.setState({ squares: squares, toesIsNext: !this.state.toesIsNext });
+  }
+
   renderSquare(i) {
     return (
       <Square
         // these are the props for the Square component
         // each Square will now receive a value prop that will either be toes picture, tic-tacs picture, or null for empty squares.
-        value={this.props.squares[i]}
+        value={this.state.squares[i]}
         // onClick function is passed down to the Square, a child component of Board
-        onClick={() => this.props.onClick(i)}
+        onClick={() => this.handleClick(i)}
       />
     );
   }
 
   render() {
+    const winner = calculateWinner(this.state.squares);
+    let status;
+    if (winner) {
+      // displaying the winner does not work yet
+      status = "Winner: " + winner;
+    } else {
+      status = "Next player: " + (this.state.toesIsNext ? "Toes" : "Tic Tac");
+    }
+
     return (
       <div>
+        {/* eslint-disable-next-line */}
+        {/* <img alt="toe picture" src={this.state.toeURL} /> */}
+        <div className="status">{status}</div>
         <div className="board-row">
           {this.renderSquare(0)}
           {this.renderSquare(1)}
@@ -50,67 +91,14 @@ class Board extends React.Component {
 }
 
 class Game extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      // where the the past squares arrays are stored
-      history: [
-        {
-          squares: Array(9).fill(null)
-        }
-      ],
-      toesIsNext: true,
-      toeURL: "https://i.imgur.com/s0gSzN0.png",
-      ticTacURL: "https://i.imgur.com/O2ieQGA.png"
-    };
-  }
-
-  // everytime the user clicks a square, a new set of squares is re-rendered with the result of the click (maintain immutability, which allows for easier tracking of moves)
-  handleClick(i) {
-    // slice was used in order to maintain immutability because it creates a copy of the square array, instead of directly modifying the current square array.
-    const history = this.state.history;
-    const current = history[history.length - 1];
-    const squares = current.squares.slice();
-    if (calculateWinner(squares) || squares[i]) {
-      return;
-    }
-    // if toesIsNext is true, it will output a "toes" the next time a user clicks
-    squares[i] = this.state.toesIsNext ? (
-      // eslint-disable-next-line
-      <img src={this.state.toeURL} />
-    ) : (
-      // eslint-disable-next-line
-      <img src={this.state.ticTacURL} />
-    );
-
-    this.setState({
-      history: history.concat([
-        {
-          squares: squares
-        }
-      ]),
-      toesIsNext: !this.state.toesIsNext
-    });
-  }
-
   render() {
-    const history = this.state.history;
-    const current = history[history.length - 1];
-    const winner = calculateWinner(current.squares);
-
-    let status;
-    if (winner) {
-      status = "Winner: " + winner;
-    } else {
-      status = "Next player: " + (this.state.toesIsNext ? "Toes" : "Tic Tac");
-    }
     return (
       <div className="game">
         <div className="game-board">
           <Board />
         </div>
         <div className="game-info">
-          <div>{status}</div>
+          <div>{/* status */}</div>
           <ol>{/* TODO */}</ol>
         </div>
       </div>
@@ -141,7 +129,6 @@ function calculateWinner(squares) {
 
 ReactDOM.render(<Game />, document.getElementById("root"));
 
-// Square Component before its state was lifted up to the Board Component
 // class Square extends React.Component {
 //   render() {
 //     return (
@@ -156,84 +143,6 @@ ReactDOM.render(<Game />, document.getElementById("root"));
 //         {/* gets value from the Square within the Board component */}
 //         {this.props.value}
 //       </button>
-//     );
-//   }
-// }
-
-// Board Component before it's state was lifted up to the Game Component
-// class Board extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       squares: Array(9).fill(null),
-//       toeURL: "https://i.imgur.com/s0gSzN0.png",
-//       ticTacURL: "https://i.imgur.com/O2ieQGA.png",
-//       // sets the first move of game to be 'Toes'
-//       toesIsNext: true
-//     };
-//   }
-
-//   // everytime the user clicks a square, a new set of squares is re-rendered with the result of the click (maintain immutability, which allows for easier tracking of moves)
-//   handleClick(i) {
-//     // slice was used in order to maintain immutability because it creates a copy of the square array, instead of directly modifying the current square array.
-//     const squares = this.state.squares.slice();
-//     if (calculateWinner(squares) || squares[i]) {
-//       return;
-//     }
-//     // if toesIsNext is true, it will output a "toes" the next time a user clicks
-//     squares[i] = this.state.toesIsNext ? (
-//       // eslint-disable-next-line
-//       <img src={this.state.toeURL} />
-//     ) : (
-//       // eslint-disable-next-line
-//       <img src={this.state.ticTacURL} />
-//     );
-//     this.setState({ squares: squares, toesIsNext: !this.state.toesIsNext });
-//   }
-
-//   renderSquare(i) {
-//     return (
-//       <Square
-//         // these are the props for the Square component
-//         // each Square will now receive a value prop that will either be toes picture, tic-tacs picture, or null for empty squares.
-//         value={this.state.squares[i]}
-//         // onClick function is passed down to the Square, a child component of Board
-//         onClick={() => this.handleClick(i)}
-//       />
-//     );
-//   }
-
-//   render() {
-//     const winner = calculateWinner(this.state.squares);
-//     let status;
-//     if (winner) {
-//       // displaying the winner does not work yet
-//       status = "Winner: " + winner;
-//     } else {
-//       status = "Next player: " + (this.state.toesIsNext ? "Toes" : "Tic Tac");
-//     }
-
-//     return (
-//       <div>
-//         {/* eslint-disable-next-line */}
-//         {/* <img alt="toe picture" src={this.state.toeURL} /> */}
-//         <div className="status">{status}</div>
-//         <div className="board-row">
-//           {this.renderSquare(0)}
-//           {this.renderSquare(1)}
-//           {this.renderSquare(2)}
-//         </div>
-//         <div className="board-row">
-//           {this.renderSquare(3)}
-//           {this.renderSquare(4)}
-//           {this.renderSquare(5)}
-//         </div>
-//         <div className="board-row">
-//           {this.renderSquare(6)}
-//           {this.renderSquare(7)}
-//           {this.renderSquare(8)}
-//         </div>
-//       </div>
 //     );
 //   }
 // }
