@@ -29,6 +29,9 @@ class Board extends React.Component {
   handleClick(i) {
     // slice was used in order to maintain immutability because it creates a copy of the square array, instead of directly modifying the current square array.
     const squares = this.state.squares.slice();
+    if (calculateWinner(squares) || squares[i]) {
+      return;
+    }
     // if toesIsNext is true, it will output a "toes" the next time a user clicks
     squares[i] = this.state.toesIsNext ? (
       // eslint-disable-next-line
@@ -53,8 +56,14 @@ class Board extends React.Component {
   }
 
   render() {
-    const status =
-      "Next player: " + (this.state.toesIsNext ? "Toes" : "Tic Tac");
+    const winner = calculateWinner(this.state.squares);
+    let status;
+    if (winner) {
+      // displaying the winner does not work yet
+      status = "Winner: " + winner;
+    } else {
+      status = "Next player: " + (this.state.toesIsNext ? "Toes" : "Tic Tac");
+    }
 
     return (
       <div>
@@ -97,7 +106,26 @@ class Game extends React.Component {
   }
 }
 
-// ========================================
+// helper function provided by React tutorial
+function calculateWinner(squares) {
+  const lines = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6]
+  ];
+  for (let i = 0; i < lines.length; i++) {
+    const [a, b, c] = lines[i];
+    if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+      return squares[a];
+    }
+  }
+  return null;
+}
 
 ReactDOM.render(<Game />, document.getElementById("root"));
 
