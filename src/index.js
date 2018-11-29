@@ -31,8 +31,10 @@ class Board extends React.Component {
     const squares = this.state.squares.slice();
     // if toesIsNext is true, it will output a "toes" the next time a user clicks
     squares[i] = this.state.toesIsNext ? (
+      // eslint-disable-next-line
       <img src={this.state.toeURL} />
     ) : (
+      // eslint-disable-next-line
       <img src={this.state.ticTacURL} />
     );
     this.setState({ squares: squares, toesIsNext: !this.state.toesIsNext });
@@ -52,14 +54,7 @@ class Board extends React.Component {
 
   render() {
     const status =
-      "Next player: " +
-      (this.state.xIsNext ? (
-        // eslint-disable-next-line
-        <img src={this.state.toeURL} />
-      ) : (
-        // eslint-disable-next-line
-        <img src={this.state.ticTacURL} />
-      ));
+      "Next player: " + (this.state.toesIsNext ? "Toes" : "Tic Tac");
 
     return (
       <div>
