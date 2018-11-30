@@ -1,3 +1,9 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
   font: 14px "Century Gothic", Futura, sans-serif;
   margin: 20px;
@@ -17,6 +23,11 @@ ul {
 
 .status {
   margin-bottom: 10px;
+  flex-direction: row;
+  justify-content: center;
+  color: white;
+  display: inline-flex;
+  background-color: black;
 }
 
 /* the square is button from react and is customized here below with CSS */
@@ -55,4 +66,39 @@ ul {
 
 .game-info {
   margin-left: 20px;
+}
+
+#instructionsCon {
+  margin-top: 20px;
+  flex-direction: row;
+  justify-content: center;
+  color: white;
+  display: flex;
+  margin-bottom: -225px;
+}
+
+#gameInstructions {
+  flex-direction: row;
+  justify-content: left;
+  color: white;
+  display: inline-flex;
+  background-color: black;
+}
+
+#design {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  margin-top: -300px;
+  color: white;
+}
+
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: red;
+  color: white;
+  text-align: center;
 }

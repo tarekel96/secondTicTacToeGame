@@ -1,20 +1,31 @@
 import React, { Component } from "react";
-// import "./HomePage.css";
+import "./HomePage.css";
 
 class HomePage extends Component {
   // state = {};
+
+  redirectUser(e) {
+    e.preventDefault();
+    window.location.href = "http://localhost:3000/App";
+  }
   render() {
     return (
       <div className="">
         <div className="main-page">
           <div className="top-section">
-            <h1>Hello World</h1>
+            <h1 id="intro">Welcome to Tic Tacs & Toes!</h1>
           </div>
+          <div class="mid" />
           <div className="bottom-section">
-            <button onClick={this._handleLogout}>LOGOUT</button>
+            <button id="startButton" onClick={this.redirectUser}>
+              START
+            </button>
+          </div>
+          <div id="desContainer">
+            <h3 id="description">Press START to Begin</h3>
           </div>
           <div className="signiture">
-            <h1>Designed by Tarek El-Hajjaoui</h1>
+            <h3 id="design">Designed by Tarek El-Hajjaoui</h3>
             <footer>© Copyright 2018 Tarek El-Hajjaoui</footer>
           </div>
         </div>

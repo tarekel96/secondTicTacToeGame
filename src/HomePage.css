@@ -1,0 +1,71 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-image: url("https://www.emethod.ca/wp-content/uploads/2014/12/Picture.jpg");
+  /* Full height */
+  height: 100%;
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#intro {
+  display: flex;
+  /* tells CSS to stack the row 'containers' in a row-like direction */
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 50px;
+  font-size: 50px;
+  color: white;
+}
+
+.bottom-section {
+  display: flex;
+  justify-content: center;
+}
+
+#startButton {
+  width: 140px;
+  height: 42px;
+  font-size: 26px;
+  margin-top: 50px;
+  margin-bottom: 10px;
+}
+
+#desContainer {
+  flex-direction: row;
+  justify-content: center;
+  color: white;
+  display: flex;
+}
+
+#description {
+  flex-direction: row;
+  justify-content: left;
+  color: white;
+  display: inline-flex;
+  background-color: black;
+}
+
+#design {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  margin-top: 300px;
+  color: white;
+}
+
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: red;
+  color: white;
+  text-align: center;
+}

@@ -92,14 +92,25 @@ class Board extends React.Component {
 class Game extends React.Component {
   render() {
     return (
-      <div className="game">
-        <div className="game-board">
-          <Board />
+      <div>
+        <div className="game">
+          <div className="game-board">
+            <Board />
+          </div>
+          <div className="game-info">
+            <div>{/* status */}</div>
+            <ol>{/* TODO */}</ol>
+          </div>
         </div>
-        <div className="game-info">
-          <div>{/* status */}</div>
-          <ol>{/* TODO */}</ol>
+        <div id="instructionsCon">
+          <h4 id="gameInstructions">
+            In order to play again, please refresh the webpage. Unfortunately,
+            the game does not keep track of each player's moves nor who
+            wins/loses YET, but stay tuned!
+          </h4>
         </div>
+        <h3 id="design">Designed by Tarek El-Hajjaoui</h3>
+        <footer>© Copyright 2018 Tarek El-Hajjaoui</footer>
       </div>
     );
   }
