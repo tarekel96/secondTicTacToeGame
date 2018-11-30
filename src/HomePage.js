@@ -6,7 +6,7 @@ class HomePage extends Component {
 
   redirectUser(e) {
     e.preventDefault();
-    window.location.href = "http://localhost:3000/App";
+    window.location.href = "/App/";
   }
   render() {
     return (
