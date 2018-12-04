@@ -1,5 +1,6 @@
 import React from "react";
 import "./App.css";
+import { Button } from "react-bootstrap";
 
 // Square functional component - only contains a render method and does not have its own state
 // always pass props as an argument for functional components
@@ -90,9 +91,40 @@ class Board extends React.Component {
 }
 
 class Game extends React.Component {
+  redirectUser(e) {
+    e.preventDefault();
+    window.location.href = "/App";
+  }
+  redirectUserHome(e) {
+    e.preventDefault();
+    window.location.href = "/";
+  }
   render() {
     return (
       <div>
+        <div id="topButtons">
+          <Button
+            id="resetButton"
+            className="border border-dark"
+            bsStyle="danger"
+            bsSize="large"
+            active
+            onClick={this.redirectUserHome}
+          >
+            HOME
+          </Button>
+          <Button
+            id="homeButton"
+            className="border border-dark"
+            bsStyle="danger"
+            bsSize="large"
+            active
+            onClick={this.redirectUser}
+          >
+            RESET
+          </Button>
+        </div>
+        {/* <span>sample text &nbsp;</span> */}
         <div className="game">
           <div className="game-board">
             <Board />
@@ -104,9 +136,8 @@ class Game extends React.Component {
         </div>
         <div id="instructionsCon">
           <h4 id="gameInstructions">
-            In order to play again, please refresh the webpage. Unfortunately,
-            the game does not keep track of each player's moves nor who
-            wins/loses YET, but stay tuned!
+            Unfortunately, the game does not keep track of each player's moves
+            nor who wins/loses YET, but stay tuned!
           </h4>
         </div>
         <h3 id="design">Designed by Tarek El-Hajjaoui</h3>

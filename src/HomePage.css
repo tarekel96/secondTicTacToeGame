@@ -30,8 +30,8 @@ body {
 }
 
 #startButton {
-  width: 140px;
-  height: 42px;
+  /* width: 140px;
+  height: 42px; */
   font-size: 26px;
   margin-top: 50px;
   margin-bottom: 10px;
@@ -56,7 +56,7 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: left;
-  margin-top: 300px;
+  margin-top: 250px;
   color: white;
 }
 

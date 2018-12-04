@@ -9,6 +9,23 @@ body {
   margin: 20px;
 }
 
+#topButtons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  /* margin-top: 50px; */
+}
+
+#resetButton {
+  font-size: 26px;
+  margin-top: 50px;
+}
+
+#homeButton {
+  font-size: 26px;
+  margin-top: 50px;
+}
+
 ol,
 ul {
   padding-left: 30px;
@@ -57,11 +74,18 @@ ul {
 }
 
 .game {
+  /* display: flex; */
+  /* tells CSS to stack the row 'containers' in a row-like direction */
+  /* flex-direction: row;
+  justify-content: center; */
+  margin-top: 40px;
+}
+
+.game-board {
   display: flex;
   /* tells CSS to stack the row 'containers' in a row-like direction */
   flex-direction: row;
   justify-content: center;
-  margin-top: 175px;
 }
 
 .game-info {

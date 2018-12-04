@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import "./HomePage.css";
+import { Button } from "react-bootstrap";
 
 class HomePage extends Component {
   // state = {};
 
   redirectUser(e) {
     e.preventDefault();
-    window.location.href = "/App/";
+    window.location.href = "/App";
   }
   render() {
     return (
@@ -17,9 +18,16 @@ class HomePage extends Component {
           </div>
           <div class="mid" />
           <div className="bottom-section">
-            <button id="startButton" onClick={this.redirectUser}>
+            <Button
+              id="startButton"
+              className="border border-dark"
+              bsStyle="danger"
+              bsSize="large"
+              active
+              onClick={this.redirectUser}
+            >
               START
-            </button>
+            </Button>
           </div>
           <div id="desContainer">
             <h3 id="description">Press START to Begin</h3>
