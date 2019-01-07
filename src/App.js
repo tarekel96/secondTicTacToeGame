@@ -1,4 +1,5 @@
 import React from "react";
+// const React = require("react");
 import "./App.css";
 import { Button } from "react-bootstrap";
 
