@@ -3,7 +3,7 @@ const express = require("express");
 const path = require("path");
 const port = process.env.PORT || 8080;
 const app = express();
-const App = require("./src/App");
+// const App = require("./src/App");
 // require("babel-core").transform(App, {
 //   presets: ["react"]
 // });
@@ -13,10 +13,17 @@ app.use(express.static(path.join(__dirname, "build")));
 app.get("/ping", function(req, res) {
   return res.send("pong");
 });
-app.get("/", function(req, res) {
-  res.sendFile(path.join(__dirname, "build", "index.html"));
+// app.get("/", function(req, res) {
+//   res.sendFile(path.join(__dirname, "build", "index.html"));
+// });
+// app.get("/", function(req, res) {
+//   res.sendFile(path.join(__dirname, "build", "index.html"));
+// });
+app.get("*", function(req, res) {
+  const index = path.join(__dirname, "build", "index.html");
+  res.sendFile(index);
 });
-app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, App, "index.html"));
-});
+// app.get("*", (req, res) => {
+//   res.sendFile(path.resolve(__dirname, "index.html"));
+// });
 app.listen(port);
