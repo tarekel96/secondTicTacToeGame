@@ -5,7 +5,19 @@
 }
 
 body {
-  background-image: url("https://www.emethod.ca/wp-content/uploads/2014/12/Picture.jpg");
+  /* background-image: url("../public/css/images/ticTacSmallPic.png"); */
+  background-color: red;
+  /* Full height */
+  height: 100%;
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.main-page {
+  /* background-image: url("../public/css/images/ticTacSmallPic.png"); */
+  background-color: purple;
   /* Full height */
   height: 100%;
   /* Center and scale the image nicely */

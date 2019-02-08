@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import "./HomePage.css";
 import { Button } from "react-bootstrap";
+import "./HomePage.css";
 
 class HomePage extends Component {
   // state = {};
