@@ -1,6 +1,8 @@
 import React from "react";
 // const React = require("react");
 import "./App.css";
+import toe from "./images/toeTicTacToe.png";
+import ticTac from "./images/ticTacSmallPic.png";
 import { Button } from "react-bootstrap";
 
 // Square functional component - only contains a render method and does not have its own state
@@ -19,9 +21,8 @@ class Board extends React.Component {
     super(props);
     this.state = {
       squares: Array(9).fill(null),
-      toeURL: "https://i.imgur.com/s0gSzN0.png",
-      ticTacURL: "https://i.imgur.com/O2ieQGA.png",
-      // sets the first move of game to be 'Toes'
+      toeURL: toe,
+      ticTacURL: ticTac,
       toesIsNext: true
     };
   }

@@ -5,7 +5,7 @@
 }
 
 body {
-  background-image: url("../public/css/images/ticTacSmallPic.png");
+  /* background-image: url("../public/css/images/ticTacSmallPic.png"); */
   font: 14px "Century Gothic", Futura, sans-serif;
   margin: 20px;
 }

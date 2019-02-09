@@ -5,8 +5,8 @@
 }
 
 body {
-  /* background-image: url("../public/css/images/ticTacSmallPic.png"); */
-  background-color: red;
+  background-image: url("./images/colorfulBackground.jpg");
+  /* background-color: red; */
   /* Full height */
   height: 100%;
   /* Center and scale the image nicely */
@@ -17,7 +17,7 @@ body {
 
 .main-page {
   /* background-image: url("../public/css/images/ticTacSmallPic.png"); */
-  background-color: purple;
+  /* background-color: purple; */
   /* Full height */
   height: 100%;
   /* Center and scale the image nicely */
